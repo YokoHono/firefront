@@ -93,7 +93,8 @@ public:
 			, size_t& nnz, size_t& nnt, int* fmap)
 		: DataLayer<T>(name), startTime(t0)
 		  , nx(nnx), ny(nny), nz(nnz), nt(nnt) {
-
+		cout << "Creating fuel layer " << name << " with " << nx << "x" << ny
+				<< "x" << nz << "x" << nt << " cells" << endl;
 		size = (size_t) nx*ny*nz*nt;
 		SWCornerX = SWCorner.getX();
 		SWCornerY = SWCorner.getY();
@@ -143,7 +144,7 @@ public:
 	string print2D(size_t, size_t);
 	void dumpAsBinary(string, const double&
 			, FFPoint&, FFPoint&, size_t&, size_t&);
-
+	size_t getSize(){return size;}
 };
 
 template<typename T>
@@ -170,7 +171,7 @@ T FuelDataLayer<T>::getValueAt(FireNode* fn){
 
 template<typename T>
 T FuelDataLayer<T>::getValueAt(FFPoint loc, const double& time){
-	cout<<"WARNING: getValueAt shouldn't be called for layer fuel, returning indice"<<this->getKey()<<endl;
+	// cout<<"WARNING: getValueAt shouldn't be called for layer fuel, returning indice"<<this->getKey()<<endl;
 	double mytime = time;
 	T retval = (T) fuelMap[getPos(loc, mytime)];
    return retval;

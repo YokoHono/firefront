@@ -88,6 +88,7 @@ void FDCell::setArrivalTime(const size_t& i, const size_t& j, double time){
 		arrivalTimes = new BurningMap(SWCorner, NECorner, mapSizeX, mapSizeY);
 		allocated = true;
 	}
+	// cout << "this is arrival time " << arrivalTimes->toString(time) << endl;
 	if ( time < (*arrivalTimes)(i,j) ) (*arrivalTimes)(i,j) = time;
 }
 

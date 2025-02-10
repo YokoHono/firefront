@@ -44,7 +44,8 @@ public:
 	/*! \brief Default constructor */
 	DataLayer(){};
 	/*! \brief Constructor with key */
-	DataLayer(string name) : key(name){};
+	DataLayer(string name) : key(name){cout << "DataLayer::DataLayer(string name) : key(name)" << name << endl;};
+
 	virtual ~DataLayer(){};
 
 	/*! \brief getter to the key of the layer */
@@ -75,7 +76,8 @@ public:
 	virtual string print() = 0;
 	virtual void dumpAsBinary(string, const double&
 			, FFPoint&, FFPoint&, size_t&, size_t&) = 0;
-
+	/*! \brief Get the size of the layer */
+    // size_t getSize() const = 0;  // Pure virtual function
 
 };
 

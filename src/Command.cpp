@@ -168,7 +168,7 @@ int Command::createDomain(const string& arg, size_t& numTabs){
 			}
 		}else{
 			currentSession.fd = new FireDomain(t, SW, NE);
-		
+			cout << "creating fire domain" << endl;
 			/* setting up the pointer to the domain */
 		
 
@@ -773,7 +773,7 @@ int Command::systemExec(const string& arg, size_t& numTabs){
 
 int Command::plotSimulation(const std::string& arg, size_t& numTabs) {
     if (getDomain() == nullptr) return normal;
-
+	cout << "line 776" << endl;
     if (!arg.empty()) {
         std::map<std::string, std::string> argMap;
         std::string temp = arg;
@@ -781,7 +781,7 @@ int Command::plotSimulation(const std::string& arg, size_t& numTabs) {
         std::string token;
         const char delim = ';';
         const char assign = '=';
-
+		cout << "line 784 " << arg << endl;
         // Parse the argument string
         while ((pos = temp.find(delim)) != std::string::npos) {
             token = temp.substr(0, pos);
@@ -794,7 +794,7 @@ int Command::plotSimulation(const std::string& arg, size_t& numTabs) {
             }
             temp.erase(0, pos + 1);
         }
-
+		cout << "line 797 " << temp << endl;
         // Handle the last part after the final semicolon
         size_t eq_pos = temp.find(assign);
         if (eq_pos != std::string::npos) {
@@ -802,7 +802,7 @@ int Command::plotSimulation(const std::string& arg, size_t& numTabs) {
             std::string value = temp.substr(eq_pos + 1);
             argMap[key] = value;
         }
-
+		cout << "line 805 " << argMap["filename"] << endl;
         // Extracted values
         std::string filename = argMap["filename"];
         std::string parameter = argMap["parameter"];
@@ -822,6 +822,7 @@ int Command::plotSimulation(const std::string& arg, size_t& numTabs) {
 		
         if (!filename.empty()) {
             auto matrix = getDomain()->getDataMatrix(parameter); // Retrieve data matrix
+			cout <<"plotting " << matrix[0][0] << endl;
             if (!matrix.empty()) {
                 writeImage(filename.c_str(), matrix, minVal, maxVal, colormap); // Write the matrix to an image file
 				if (argMap.find("histogram") != argMap.end()) {

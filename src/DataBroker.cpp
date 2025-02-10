@@ -23,7 +23,6 @@
 #include "FireDomain.h"
 
 namespace libforefire {
-
 const DataBroker::propGetterMap DataBroker::propPropertiesGetters =
 		DataBroker::makePGmap();
 const DataBroker::fluxGetterMap DataBroker::fluxPropertiesGetters =
@@ -48,6 +47,7 @@ double frontScanDistance = 1000;
 
 DataBroker::DataBroker(FireDomain* fd) :
 		domain(fd) {
+			cout << "DataBroker" << endl;
 	commonInitialization();
 }
 

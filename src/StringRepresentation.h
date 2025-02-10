@@ -69,6 +69,10 @@ public:
 	string outPattern;
     int dumpMode;
     int lastLevel;
+	
+private:
+    bool firstFront; // Tracks if it's the first fire front
+    bool firstNode;  // Tracks if it's the first node within a fire front
 };
 
 }

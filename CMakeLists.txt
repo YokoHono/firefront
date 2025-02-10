@@ -35,5 +35,5 @@ target_link_libraries(forefireL "-lnetcdf_c++4 -lnetcdf")
 
 
 # Specific main for the test if different
-set(TEST_MAIN tests/ANNTest.cpp)
-add_executable(ANN_test ${TEST_MAIN})
+# set(TEST_MAIN tests/ANNTest.cpp)
+# add_executable(ANN_test ${TEST_MAIN})
